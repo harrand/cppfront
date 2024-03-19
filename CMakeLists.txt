@@ -26,6 +26,9 @@ mark_as_advanced(CPPFRONT_INSTALL_RULES)
 # Target definition for cppfront executable
 
 add_executable(cppfront_cppfront cppfront/source/cppfront.cpp)
+if(MSVC)
+  target_compile_options(cppfront_cppfront PUBLIC /bigobj)
+endif ()
 add_executable(cppfront::cppfront ALIAS cppfront_cppfront)
 set_target_properties(
     cppfront_cppfront
